@@ -1,0 +1,18 @@
+version: 1
+common:
+  resourcesPath: dapr/local
+  env:
+    DEBUG: true
+apps:
+  - appID: aca-sample-backend
+    appDirPath: ./src/backend/
+    appPort: 8080
+    command: ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
+    env:
+      SECRET_STORE_NAME: "acs-sample-secretstore"
+      CALLBACK_EVENTS_URI: "<DEV_TUNNEL_ENDPOINT>" # e.g. ONLY FOR SERVER SIDE ROUTING
+  # - appID: aca-sample-phone
+  #   appDirPath: ./src/phone/
+  #   appPort: 9000
+  #   env:
+  #     BACKEND_API_APP_ID: "aca-sample-phone"
